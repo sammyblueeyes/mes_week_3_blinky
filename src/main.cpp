@@ -1,5 +1,3 @@
-#define TARGET_ST32F411EDOSCO
-
 #include <led.h>
 
 int main(void)
