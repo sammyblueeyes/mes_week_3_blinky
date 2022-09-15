@@ -14,9 +14,12 @@ int main(void)
   }
 }
 
+// stm32cube overrides are C functions
+extern "C" {
 
+  void SysTick_Handler(void)
+  {
+    HAL_IncTick();
+  }
 
-void SysTick_Handler(void)
-{
-  HAL_IncTick();
-}
+} // extern "C"
