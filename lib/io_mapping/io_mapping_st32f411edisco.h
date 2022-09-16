@@ -6,6 +6,7 @@ extern "C"
 #endif
 
 #include <stm32f4xx_hal.h>
+#include <string.h>
 
 #define GREEN_LED_PIN GPIO_PIN_12
 #define ORANGE_LED_PIN GPIO_PIN_13
@@ -19,6 +20,9 @@ extern "C"
 #define BUTTON_PIN GPIO_PIN_0
 #define BUTTON_GPIO_PORT GPIOA
 #define BUTTON_IRQn EXTI0_IRQn
+
+void io_logging_init();
+void io_logging_write(const char* msg, size_t len);
 
 #ifdef __cplusplus
 } // extern "C"

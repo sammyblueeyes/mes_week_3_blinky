@@ -1,5 +1,7 @@
 #include <led.h>
 #include <button.h>
+#include <dbg_logging.h>
+
 #include <io_mapping.h>
 #include <memory>
 
@@ -48,6 +50,7 @@ ProgramState g_state;
 int main(void)
 {
   HAL_Init();
+  LoggingInit();
 
   // NOTE (from HAL): After reset, the peripheral clock (used for registers read/write access)
   // is disabled and the application software has to enable this clock before using it.
@@ -70,12 +73,14 @@ int main(void)
       g_state.leds[cur_led]->TurnOff();
       blink_elapsed = BLINK_INTERVAL_MS;
       g_state.leds[LED_RED]->TurnOn();
+      Log(LOG_SUBSYSTEM_MAIN, LOG_LEVEL_DEBUG, "Button Pressed\r\n");
     } else {
       g_state.leds[LED_RED]->TurnOff();
       blink_elapsed += LOOP_INTERVAL_MS;
       if (blink_elapsed >= BLINK_INTERVAL_MS) {
         blink_elapsed = 0;
         g_state.leds[cur_led]->Blink();
+        Log(LOG_SUBSYSTEM_MAIN, LOG_LEVEL_DEBUG, "Toggling\r\n");
       }
     
     }
