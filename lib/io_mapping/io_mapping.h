@@ -1,7 +1,8 @@
 #pragma once
 
 #ifdef __cplusplus
- extern "C" {
+extern "C"
+{
 #endif
 
 #ifdef STM32F411xE
@@ -10,7 +11,6 @@
 #error "No I/O map selected for the board. What is our target?"
 #endif
 
-
 #ifdef __cplusplus
- } // extern "C"
+} // extern "C"
 #endif
